@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nickname: MyString
+  password_digest: MyString
+  notification_wday: 1
+  notification_time: 2026-03-16 11:48:59
+
+two:
+  nickname: MyString
+  password_digest: MyString
+  notification_wday: 1
+  notification_time: 2026-03-16 11:48:59
