@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
-  resources :users, only: [:new, :create]
+  get "signup", to: "users#new"
+  resources :users, only: [:create]
 
   # PWA等の標準設定
   get "up" => "rails/health#show", as: :rails_health_check
