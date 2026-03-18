@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "users/new"
-  get "users/create"
   root "sessions#new"
 
   get "login", to: "sessions#new"
@@ -8,7 +6,9 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   get "signup", to: "users#new"
-  resources :users, only: [:create]
+  resources :users, only: [ :create ]
+
+  resources :memories, only: [ :index, :create, :update, :destroy ]
 
   # PWA等の標準設定
   get "up" => "rails/health#show", as: :rails_health_check
