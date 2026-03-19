@@ -1,2 +1,41 @@
-<h1>Memories#index</h1>
-<p>Find me in app/views/memories/index.html.erb</p>
+<div class="container mt-4">
+  <h2 class="mb-4">あとで調べるリスト </h2>
+    <% if @memory.errors.any? %>
+      <div class="alert alert-danger">
+        <ul class="mb-0">
+          <% @memory.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <%= form_with(model: @memry) do |f| %>
+          <div class="row g-2">
+            <div class="col">
+              <%= f.text_field :content, class: "form-control", placeholder: "何を調べますか？（140文字以内）"  %>
+            </div>
+            <div class="col-auto">
+              <%= f.submit "追加", class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="list-group">
+      <% @memories.each do |memory| %>
+        <div class="list-group-item d-flex justify-content-between align-items-center mb-2 shadow-sm rounded border-0">
+          <div>
+            <div class="fw-bold"><%= memory.content %></div>
+            <div class="text-muted small">
+              <%= memory.created_at.strftime("%Y/%m/%d %H:%M") %>
+            </div>
+          </div>
+          <div class="btn btn-outline-success btn-sm">解決！</div>
+        </div>
+      <% end %>
+    </div>
+</div>
