@@ -16,6 +16,12 @@ class MemoriesController < ApplicationController
   end
 
   def update
+    @memory = current_user.memories.find(params[:id])
+    if @memory.update(status: 1)
+      redirect_to memories_path, notice: "解決済みにしました！"
+    else
+      redirect_to memories_path, alert: "更新に失敗しました"
+    end
   end
 
   def destroy

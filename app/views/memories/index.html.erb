@@ -34,7 +34,7 @@
               <%= memory.created_at.strftime("%Y/%m/%d %H:%M") %>
             </div>
           </div>
-          <div class="btn btn-outline-success btn-sm">解決！</div>
+          <%= button_to "解決！", memory_path(memory), method: :patch, class: "btn btn-outline-success btn-sm" %>
         </div>
       <% end %>
     </div>
