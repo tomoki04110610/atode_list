@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get "signup", to: "users#new"
   resources :users, only: [ :create ]
 
-  resources :memories, only: [ :index, :create, :update, :destroy ]
+  resources :memories, only: [ :index, :create, :update, :destroy ] do
+    collection do
+      get :history
+    end
+  end
 
   # PWA等の標準設定
   get "up" => "rails/health#show", as: :rails_health_check

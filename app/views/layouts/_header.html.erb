@@ -4,6 +4,7 @@
 
     <% if logged_in? %>
       <div class="d-flex align-items-center">
+        <%= link_to "解決済みリスト", history_memories_path, class: "nav-link text-light me-4" %>
         <span class="navbar-text me-3 text-light">
           <%= current_user.nickname %>さん
         </span>

@@ -5,6 +5,10 @@ class MemoriesController < ApplicationController
     @memory = current_user.memories.build
   end
 
+  def history
+    @history_memories = current_user.memories.where(status: 1).order(updated_at: :desc)
+  end
+
   def create
     @memory = current_user.memories.build(memory_params)
     if @memory.save

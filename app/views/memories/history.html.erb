@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">解決済みリスト</h2>
+        <%= link_to "あとでリストにもどる", memories_path, class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+
+      <% if @history_memories.any? %>
+        <div class="list-group shadow-sm">
+          <% @history_memories.each do |memory| %>
+            <div class="list-group-item bg-light d-flex justify-content-between align-items-center">
+              <div>
+                <span class="fw-bold text-dark"><%= memory.content%></span>
+                <br>
+                <small class="text-muted" style="font-size: 0.75rem;">
+                  解決日時: <%= memory.updated_at.strftime("%Y/%m/%d %H:%M") %>
+                </small>
+                <span class="badge bg-secondary rounded-pill">解決済み</span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="text-center py-5 border rounded bg-light">
+          <p class="text-muted mb-0">まだ解決済みのアイテムはありません。</p>
+        </div>
+      <% end %>
+      
+    </div>
+  </div>
+</div>
