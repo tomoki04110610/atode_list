@@ -21,6 +21,7 @@
 
   <body>
     <%= render 'layouts/header' %>
+    
     <div class="container mt-3">
       <% flash.each do |message_type, message| %>
         <% alert_class = (message_type == "alert" ? "danger" : "success") %>
@@ -31,6 +32,6 @@
       <% end %>
     </div>
     <%= yield %>
-    <script src="https://cdn.jsdelivr.net"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
