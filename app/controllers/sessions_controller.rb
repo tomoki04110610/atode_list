@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(nickname: params[:nickname])
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      log_in user
       redirect_to memories_path, notice: "ログインしました！"
     else
       flash.now[:alert] = "ニックネームまたはパスワードが正しくありません"
@@ -16,7 +16,18 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to root_path, notice: "ログアウトしました"
+    log_out if logged_in?
+    redirect_to root_path, notice: "ログアウトしました", status: :see_other
+  end
+
+  private
+
+  def log_in(user)
+    session[:user_id] = user.id
+  end
+
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
   end
 end
