@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_action :logged_in_user, only: [ :new, :create ], raise: false
   def new
+    if logged_in?
+      redirect_to memories_path
+    end
   end
 
   def create
