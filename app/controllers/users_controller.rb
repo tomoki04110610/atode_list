@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to memories_path, notice: "ユーザー登録が完了しました！"
     else
+      flash.now[:danger] = "登録に失敗しました。入力内容を確認してください。"
       render :new, status: :unprocessable_entity
     end
   end
