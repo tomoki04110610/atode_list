@@ -27,14 +27,22 @@
 
     <div class="list-group">
       <% @memories.each do |memory| %>
-        <div class="list-group-item d-flex justify-content-between align-items-center mb-2 shadow-sm rounded border-0">
-          <div>
-            <div class="fw-bold"><%= memory.content %></div>
+        <div class="list-group-item d-flex justify-content-between align-items-center mb-3 shadow-sm rounded border-0 bg-white p-3">
+          <div class="me-auto">
+            <div class="fw-bold text-dark mb-1"><%= memory.content %></div>
             <div class="text-muted small">
               <%= memory.created_at.strftime("%Y/%m/%d %H:%M") %>
             </div>
           </div>
-          <%= button_to "解決！", memory_path(memory), method: :patch, class: "btn btn-outline-success btn-sm" %>
+
+          <div class="d-flex align-items-center gap-2">
+            <%= button_to "解決！", memory_path(memory), method: :patch, 
+                class: "btn btn-success btn-sm px-3 rounded-pill shadow-sm" %>
+
+            <%= button_to "削除", memory_path(memory), method: :delete, 
+            data: { turbo_confirm: "この項目を削除しますか？" }, 
+            class: "btn btn-outline-danger btn-sm rounded-pill" %>
+          </div>
         </div>
       <% end %>
     </div>

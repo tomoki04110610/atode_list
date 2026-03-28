@@ -4,8 +4,10 @@
 
     <% if logged_in? %>
       <div class="d-flex align-items-center">
-        <%= link_to "あとでリスト", memories_path, class: "nav-link text-light me-3"%>
-        <%= link_to "解決済みリスト", history_memories_path, class: "nav-link text-light me-4" %>
+        <%= link_to "あとでリスト", memories_path, 
+            class: "nav-link text-light me-3 #{'active fw-bord border-bottom' if current_page?(memories_path)}" %>
+        <%= link_to "解決済みリスト", history_memories_path, 
+            class: "nav-link text-light me-4 #{'active fw-bold border-bottom' if current_page?(history_memories_path)}" %>
         <span class="navbar-text me-3 text-light border-start ps-3">
           <%= current_user.nickname %>さん
         </span>
