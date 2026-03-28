@@ -29,6 +29,9 @@ class MemoriesController < ApplicationController
   end
 
   def destroy
+    @memory = current_user.memories.find(params[:id])
+    @memory.destroy
+    redirect_to history_memories_path, notice: "削除しました", status: :see_other
   end
 
   private

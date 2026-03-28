@@ -10,6 +10,7 @@
         <div class="list-group shadow-sm">
           <% @history_memories.each do |memory| %>
             <div class="list-group-item bg-light d-flex justify-content-between align-items-center">
+
               <div>
                 <span class="fw-bold text-dark"><%= memory.content%></span>
                 <br>
@@ -18,6 +19,13 @@
                 </small>
                 <span class="badge bg-secondary rounded-pill">解決済み</span>
               </div>
+
+              <div class="d-flex align-items-center">
+                <%= button_to "削除", memory_path(memory), method: :delete,
+                    data: { turbo_confirm: "この履歴を完全に削除しますか？" },
+                    class: "btn btn-outline-danger btn-sm" %>
+              </div>
+
             </div>
           <% end %>
         </div>
